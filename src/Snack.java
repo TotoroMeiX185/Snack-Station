@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -51,7 +54,7 @@ public class Snack extends javax.swing.JFrame {
 
         lbl1.setBackground(new java.awt.Color(153, 153, 255));
         lbl1.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 24)); // NOI18N
-        lbl1.setForeground(new java.awt.Color(153, 153, 255));
+        lbl1.setForeground(new java.awt.Color(102, 0, 204));
         lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl1.setText("Snack Station");
 
@@ -176,6 +179,11 @@ public class Snack extends javax.swing.JFrame {
         purchasebtn.setBackground(new java.awt.Color(204, 0, 0));
         purchasebtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         purchasebtn.setText("Purchase");
+        purchasebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purchasebtnActionPerformed(evt);
+            }
+        });
 
         clearbtn.setBackground(new java.awt.Color(204, 0, 0));
         clearbtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -342,6 +350,39 @@ public class Snack extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_graperbActionPerformed
+
+    private void purchasebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchasebtnActionPerformed
+        // This pays for our purchase if we have enough money
+        
+        double money=0;
+        money = Double.parseDouble(moneytf.getText());
+        
+        if(chocorb.isSelected()){
+        money = money-1.25;
+        }
+        else if(latterb.isSelected()){
+        money= money-1.25;
+        }
+        else if(waterrb.isSelected()){
+        money= money - 1.00;
+        }
+        else if(applerb.isSelected()){
+        money = money -1.50;
+        }
+        else if(vanillarb.isSelected()){
+        money = money - 1.05;
+       }
+        else if(graperb.isSelected()){
+        money = money-2.00;
+        }
+        
+        if(money <0){
+        JOptionPane.showMessageDialog(rootPane,"Sorry you do not have enough money");
+        }
+        else{
+        changetf.setText(Double.toString(money));
+        }
+    }//GEN-LAST:event_purchasebtnActionPerformed
 
     /**
      * @param args the command line arguments
